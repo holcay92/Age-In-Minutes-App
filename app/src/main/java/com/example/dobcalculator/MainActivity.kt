@@ -11,8 +11,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private var tvDateSelected : TextView? = null
-    private var tvMinutesOld : TextView? = null
+    private var tvDateSelected: TextView? = null
+    private var tvMinutesOld: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,11 +48,16 @@ class MainActivity : AppCompatActivity() {
                 val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
 
                 val theDate = sdf.parse(selectedDate)
-                val selectedDateInMinutes = theDate!!.time / 60000
-                val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
-                val currentDateToMinutes = currentDate!!.time / 60000
-                val differenceInMinutes = currentDateToMinutes - selectedDateInMinutes
-                tvMinutesOld?.text = "$differenceInMinutes"
+
+                theDate?.let {
+                    val selectedDateInMinutes = theDate!!.time / 60000
+                    val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
+                    currentDate?.let {
+                        val currentDateToMinutes = currentDate!!.time / 60000
+                        val differenceInMinutes = currentDateToMinutes - selectedDateInMinutes
+                        tvMinutesOld?.text = "$differenceInMinutes"
+                    }
+                }
 
 
             },
