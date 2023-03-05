@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         tvMinutesOld = findViewById(R.id.tvAgeInMinutes)
 
         datePickerButton.setOnClickListener {
-            Toast.makeText(this, "Button was clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Date Picker is Opened", Toast.LENGTH_SHORT).show()
             clickDatePicker()
         }
     }
